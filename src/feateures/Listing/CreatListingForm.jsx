@@ -3,17 +3,20 @@ import Form from "../../ui/Form";
 import FormRow from "../../ui/FormRow";
 import Input from "../../ui/Input";
 import Moadal from "../../ui/Moadal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../../ui/Button";
 import useCretListing from "../Listing/useCretListing";
 import FileInput from "../../ui/FileInput";
 import { UseGeolocation } from "../../helpers/UseGeolocation";
 import { useMapClick } from "../../context/mapContext";
 import { useNavigate } from "react-router-dom";
+import { getCityFromCoords } from "../../Services/getCityFromCoords";
 export default function CreatListingForm() {
+  const navigate = useNavigate();
   const { clickedPosition } = useMapClick();
+  const [CityName, setCityName] = useState("");
   const [open, setOpen] = useState(true);
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit, reset, setValue } = useForm();
   const { creatListingf } = useCretListing();
   function onSubmit(data) {
     console.log("Submitting:", data);
@@ -23,28 +26,24 @@ export default function CreatListingForm() {
       },
     });
   }
-  const { getPosition, position } = UseGeolocation();
-  console.log(position);
+  useEffect(() => {
+    async function fetchCity() {
+      if (clickedPosition.lat && clickedPosition.lng) {
+        const City = await getCityFromCoords({
+          lat: clickedPosition.lat,
+          lng: clickedPosition.lng,
+        });
+        setCityName(City);
+        setValue("city", City.city);
+      }
+    }
+    fetchCity();
+  }, [clickedPosition, setValue]);
+  //const { getPosition, position } = UseGeolocation();
+  console.log(CityName);
   return (
     <Moadal open={open}>
       <Form type="form" onSubmit={handleSubmit(onSubmit)}>
-        <FormRow labels="lat">
-          <Input
-            value={clickedPosition.lat}
-            id="lat"
-            type="number"
-            {...register("lat", { required: "This field is required" })}
-          />
-        </FormRow>
-        <FormRow labels="lng">
-          <Input
-            id="lng"
-            type="number"
-            value={clickedPosition.lng}
-            {...register("lng", { required: "This field is required" })}
-          />
-        </FormRow>
-
         <FormRow labels="city name">
           <Input
             id="listing-name"
@@ -69,35 +68,43 @@ export default function CreatListingForm() {
           />
         </FormRow>
 
-        <FormRow labels="Address">
+        <FormRow labels="Description">
           <textarea
-            id="addres"
-            {...register("addres", { required: "This field is required" })}
-            className="border border-gray-300 bg-gray-50 rounded p-[0.8rem_1.2rem] w-[280px] mt-6"
+            id="description"
+            {...register("description", { required: "This field is required" })}
+            className=" border border-gray-300 bg-gray-50 rounded p-[0.8rem_1.2rem] w-[280px] mt-6"
           />
-          <Button onClick={getPosition}>get ur position </Button>
-          <Button
-            onClick={() => {
-              useNavigate(-1);
-            }}
-          >
-            {" "}
-            search in map{" "}
-          </Button>
+        </FormRow>
+        <FormRow labels="lat">
+          <Input
+            value={clickedPosition.lat}
+            id="lat"
+            type="number"
+            {...register("lat", { required: "This field is required" })}
+          />
+        </FormRow>
+        <FormRow labels="lng">
+          <Input
+            id="lng"
+            type="number"
+            value={clickedPosition.lng}
+            {...register("lng", { required: "This field is required" })}
+          />
         </FormRow>
         <FormRow labels="listing photo">
           <FileInput />
         </FormRow>
-
-        <Button
-          type="secondary"
-          onClick={(e) => {
-            e.preventDefault();
-            setOpen(false);
-          }}
-        >
-          Close
-        </Button>
+        <div className="flex ">
+          <Button
+            type="secondary"
+            onClick={(e) => {
+              e.preventDefault();
+              setOpen(false);
+            }}
+          >
+            Close
+          </Button>
+        </div>
 
         <button type="submit">Submit</button>
       </Form>

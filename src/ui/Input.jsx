@@ -7,7 +7,9 @@ const Input = forwardRef(({ type, ...rest }, ref) => {
       type={type}
       {...rest}
       ref={ref} // Forward the ref here!
-      className="border border-gray-300 bg-gray-50 rounded p-[0.8rem_1.2rem] w-[280px] h-[20px] mt-6 max-sm:bg-green"
+      className="border border-grey-300 bg-grey-0 rounded-md px-4 py-2
+                 text-sm w-full
+                 sm:text-base sm:px-5 sm:py-2.5"
     />
   );
 });

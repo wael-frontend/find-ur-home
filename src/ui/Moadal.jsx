@@ -21,8 +21,10 @@ export default function Moadal({ open, children, onClose }) {
       {open && (
         <motion.div
           initial={{ opacity: 0, y: -100 }}
-          animate={{ opacity: 1, transition: { duration: 0.5 }, y: 0 }}
-          className="fixed  top-2 left-0 right-0 w-full h-screen  block bg-white/20 backdrop-blur-md border-b border-white/20 z-0"
+          animate={{ opacity: 1, y: 0, transition: { duration: 0.5 } }}
+          className="fixed top-2 left-[100px] right-0 w-[calc(100%-100px)] h-screen
+                   bg-white/20 backdrop-blur-md border-b border-white/20 z-50
+                   max-sm:left-0 max-sm:w-[100%] max-sm:top-5"
         >
           {children}
         </motion.div>

@@ -8,6 +8,7 @@ export async function getListings() {
   }
   return data;
 }
+
 export async function CreateListing(data) {
   const { data: inserteddata, error } = await supabase
     .from("listings")

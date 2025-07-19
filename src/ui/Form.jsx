@@ -6,7 +6,7 @@ export default function Form({ onSubmit, type = "form", children, ...props }) {
   const formClasses = `
     p-6 md:p-10 
     border border-gray-100 rounded-md
-    bg-gray-500
+    bg-white
     w-[90%] md:w-[70%]
     ml-[1rem] md:ml-[250px]
     h-[80vh] md:h-[100%]

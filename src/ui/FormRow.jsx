@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 export default function FormRow({ children, labels }) {
   return (
     <div
-      className="grid grid-cols-1 md:grid-cols-[24rem_1fr_1.2fr] gap-6 p-6 items-center 
-                    first:pt-0 last:pb-0 not-last:border-b border-gray-200"
+      className=" grid grid-cols-2 md:grid-cols-[24rem_1fr_1.2fr] gap-0 p-2 place-items-baseline 
+                    first:pt-0  not-last:border-b border-gray-200"
     >
-      <label className="font-medium text-gray-700">{labels}</label>
+      <label className="text-white-700 font-extrabold ">{labels}</label>
       {children}
     </div>
   );

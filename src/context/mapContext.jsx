@@ -1,14 +1,21 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import { UseGeolocation } from "../helpers/UseGeolocation";
 
 const MapClickContext = createContext();
 
 export function MapClickProvider({ children }) {
+  const { position } = UseGeolocation();
   const [clickedPosition, setClickedPosition] = useState({
-    lat: 31.60287835430267,
-    lng: -7.9987021222114905,
+    lat: 41.6028735430267,
+    lng: -6.998123322114905,
   });
-
+  console.log(position);
+  useEffect(() => {
+    if (position) {
+      setClickedPosition(position);
+    }
+  }, [position]);
   return (
     <MapClickContext.Provider value={{ clickedPosition, setClickedPosition }}>
       {children}
