@@ -19,12 +19,17 @@ export default function CreatListingForm() {
   const { register, handleSubmit, reset, setValue } = useForm();
   const { creatListingf } = useCretListing();
   function onSubmit(data) {
-    console.log("Submitting:", data);
-    creatListingf(data, {
-      onSuccess: () => {
-        reset();
-      },
-    });
+    const image = typeof data.image === "string" ? data.image : data.image[0];
+
+    creatListingf(
+      { ...data, image },
+      {
+        onSuccess: () => {
+          reset();
+        },
+      }
+    );
+    console.log(data);
   }
   useEffect(() => {
     async function fetchCity() {
@@ -35,15 +40,16 @@ export default function CreatListingForm() {
         });
         setCityName(City);
         setValue("city", City.city);
+        setValue("lat", parseFloat(clickedPosition.lat));
+        setValue("lng", parseFloat(clickedPosition.lng));
       }
     }
     fetchCity();
   }, [clickedPosition, setValue]);
   //const { getPosition, position } = UseGeolocation();
-  console.log(CityName);
   return (
     <Moadal open={open}>
-      <Form type="form" onSubmit={handleSubmit(onSubmit)}>
+      <Form noValidate type="form" onSubmit={handleSubmit(onSubmit)}>
         <FormRow labels="city name">
           <Input
             id="listing-name"
@@ -51,7 +57,6 @@ export default function CreatListingForm() {
             {...register("city", { required: "This field is required" })}
           />
         </FormRow>
-
         <FormRow labels="Number of rooms">
           <Input
             id="rooms"
@@ -59,7 +64,6 @@ export default function CreatListingForm() {
             {...register("rooms", { required: "This field is required" })}
           />
         </FormRow>
-
         <FormRow labels="Title">
           <Input
             id="title"
@@ -67,7 +71,6 @@ export default function CreatListingForm() {
             {...register("title", { required: "This field is required" })}
           />
         </FormRow>
-
         <FormRow labels="Description">
           <textarea
             id="description"
@@ -77,7 +80,6 @@ export default function CreatListingForm() {
         </FormRow>
         <FormRow labels="lat">
           <Input
-            value={clickedPosition.lat}
             id="lat"
             type="number"
             {...register("lat", { required: "This field is required" })}
@@ -87,13 +89,16 @@ export default function CreatListingForm() {
           <Input
             id="lng"
             type="number"
-            value={clickedPosition.lng}
             {...register("lng", { required: "This field is required" })}
           />
         </FormRow>
-        <FormRow labels="listing photo">
-          <FileInput />
-        </FormRow>
+        <FileInput
+          id="image"
+          accept="image/*"
+          {...register("image", {
+            required: "this field is requerd",
+          })}
+        />
         <div className="flex ">
           <Button
             type="secondary"
@@ -105,7 +110,6 @@ export default function CreatListingForm() {
             Close
           </Button>
         </div>
-
         <button type="submit">Submit</button>
       </Form>
     </Moadal>
