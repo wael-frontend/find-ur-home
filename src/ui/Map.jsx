@@ -28,13 +28,12 @@ export default function Map() {
   const { clickedPosition, setClickedPosition } = useMapClick();
   const [mapLat, mapLng] = useUrlPosition();
   const { position: geolocationPosition, getPosition } = UseGeolocation();
-
+  console.log(clickedPosition);
   useEffect(() => {
     if (mapLat && mapLng) {
       setClickedPosition({ lat: parseFloat(mapLat), lng: mapLng });
     }
   }, [mapLat, mapLng, setClickedPosition]);
-
   useEffect(() => {
     if (geolocationPosition) {
       setClickedPosition({
@@ -63,7 +62,8 @@ export default function Map() {
           attribution="&copy; OpenStreetMap contributors"
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <MapClickHandler onCitySelect={(city) => setClickedPosition(city)} />
+        {/*         <MapClickHandler onCitySelect={(city) => setClickedPosition(city)} />
+         */}{" "}
         <Marker position={[initialLat, initialLng]}>
           <Popup>Hello world!</Popup>
         </Marker>
@@ -82,25 +82,28 @@ function MapClickLogger() {
 
       setClickedPosition({ lat, lng });
       // You can do whatever you want here with lat/lng
-      console.log(lat, lng);
       navigate("/listing");
     },
   });
   return null;
 }
-
-function MapClickHandler({ onCitySelect }) {
+/* function MapClickHandler({ onCitySelect }) {
   useMapEvents({
     click: async (e) => {
       const { lat, lng } = e.latlng;
-      const city = await getCityFromCoords(lat, lng);
-      console.log("Clicked city:", city);
-      onCitySelect(city);
+      try {
+        const city = await getCityFromCoords(lat, lng);
+        onCitySelect(city);
+      } catch (err) {
+        console.error("Failed to fetch city from coordinates", err);
+      }
+      console.log(lat, lng);
     },
-  });
+  }); 
 
   return null;
-}
-MapClickHandler.propTypes = {
+}*/
+
+/* MapClickHandler.propTypes = {
   onCitySelect: PropTypes.func,
-};
+}; */

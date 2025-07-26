@@ -11,8 +11,10 @@ import { UseGeolocation } from "../../helpers/UseGeolocation";
 import { useMapClick } from "../../context/mapContext";
 import { useNavigate } from "react-router-dom";
 import { getCityFromCoords } from "../../Services/getCityFromCoords";
+import convertFlagCode from "../../helpers/convertFlagCode";
 export default function CreatListingForm() {
   const navigate = useNavigate();
+  const [flag, setFlag] = useState("");
   const { clickedPosition } = useMapClick();
   const [CityName, setCityName] = useState("");
   const [open, setOpen] = useState(true);
@@ -29,16 +31,18 @@ export default function CreatListingForm() {
         },
       }
     );
-    console.log(data);
   }
   useEffect(() => {
     async function fetchCity() {
       if (clickedPosition.lat && clickedPosition.lng) {
-        const City = await getCityFromCoords({
-          lat: clickedPosition.lat,
-          lng: clickedPosition.lng,
-        });
+        const { City, country, Country_code } = await getCityFromCoords(
+          clickedPosition.lat,
+          clickedPosition.lng
+        );
+        console.log(country);
+        console.log(Country_code);
         setCityName(City);
+        setFlag(convertFlagCode(Country_code));
         setValue("city", City.city);
         setValue("lat", parseFloat(clickedPosition.lat));
         setValue("lng", parseFloat(clickedPosition.lng));
@@ -57,6 +61,27 @@ export default function CreatListingForm() {
             {...register("city", { required: "This field is required" })}
           />
         </FormRow>
+        <FormRow labels="Price">
+          <Input
+            id="price"
+            type="number"
+            {...register("price", { required: "This field is required" })}
+          />
+        </FormRow>
+        <FormRow labels="descount">
+          <Input
+            id="descount"
+            type="number"
+            {...register("descount", { required: "This field is required" })}
+          />
+        </FormRow>
+        <FormRow labels="number of bathroom">
+          <Input
+            id="bathroom"
+            type="text"
+            {...register("bathroom", { required: "This field is required" })}
+          />
+        </FormRow>
         <FormRow labels="Number of rooms">
           <Input
             id="rooms"
@@ -64,13 +89,7 @@ export default function CreatListingForm() {
             {...register("rooms", { required: "This field is required" })}
           />
         </FormRow>
-        <FormRow labels="Title">
-          <Input
-            id="title"
-            type="text"
-            {...register("title", { required: "This field is required" })}
-          />
-        </FormRow>
+
         <FormRow labels="Description">
           <textarea
             id="description"

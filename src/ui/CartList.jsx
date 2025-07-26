@@ -1,9 +1,11 @@
+import { BathtubRounded, BedOutlined, LocationOn } from "@mui/icons-material";
 import { useListingData } from "../feateures/Listing/useListingData";
+import Spinner from "./Spinner";
 export default function CartList() {
   const { listings } = useListingData();
 
   console.log(listings);
-  if (!listings || listings.length === 0) return <p>Loading...</p>;
+  if (!listings || listings.length === 0) return <Spinner />;
   return (
     <>
       {listings.map((listing) => (
@@ -11,28 +13,54 @@ export default function CartList() {
           className=" mt-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 "
           key={listing.id}
         >
-          <div className=" w-[100%]  ">
+          <div className="flex max-sm:flex-col  ">
             <img
-              className="w-full h-[500px] object-cover p-8 rounded-t-lg"
+              className="w-[500px] h-[400px] object-cover p-8 "
               src={listing.image}
               alt="Listing image"
             />
+            <div>
+              <h2 className=" mt-10 text-xl font-semibold tracking-tight text-gray-900 dark:text-white max-sm:mt-0">
+                {listing.description}
+              </h2>
+            </div>
+          </div>
+          <div className=" flex  max-lg:relative max-sm:bottom-0 text-amber-200 ml-5  ">
+            <LocationOn />
+            <p>{listing.city}</p>
           </div>
 
           <div className="px-5 pb-5 mt-5">
-            <a href="#">
-              <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
-                {listing.description}
-              </h5>
-            </a>
-
+            <div className="flex ">
+              <div className=" flex gap-1.5 max-sm: text-amber-200 mr-[300px]">
+                <BathtubRounded />
+                {listing.bathroom}
+                <p className="ml-2"> bathroom</p>
+              </div>
+            </div>
+            <div className=" flex gap-1.5 max-sm: text-amber-200 mr-[300px] mt-4">
+              <BedOutlined />
+              {listing.rooms}
+              <p className="ml-2"> bathroom</p>
+            </div>
             {/* Rating */}
-            <div className="flex items-center mt-2.5 mb-5">
-              <div className="flex items-center space-x-1 rtl:space-x-reverse">
-                {[...Array(4)].map((_, i) => (
+            <div>
+              <div className="flex items-center mt-2.5 mb-5">
+                <div className="flex items-center space-x-1 rtl:space-x-reverse">
+                  {[...Array(4)].map((_, i) => (
+                    <svg
+                      key={i}
+                      className="w-4 h-4 text-yellow-300"
+                      fill="currentColor"
+                      viewBox="0 0 22 20"
+                      xmlns="/public/HOMEbg.jpeg"
+                      aria-hidden="true"
+                    >
+                      <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                    </svg>
+                  ))}
                   <svg
-                    key={i}
-                    className="w-4 h-4 text-yellow-300"
+                    className="w-4 h-4 text-gray-200 dark:text-gray-600"
                     fill="currentColor"
                     viewBox="0 0 22 20"
                     xmlns="/public/HOMEbg.jpeg"
@@ -40,33 +68,25 @@ export default function CartList() {
                   >
                     <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
                   </svg>
-                ))}
-                <svg
-                  className="w-4 h-4 text-gray-200 dark:text-gray-600"
-                  fill="currentColor"
-                  viewBox="0 0 22 20"
-                  xmlns="/public/HOMEbg.jpeg"
-                  aria-hidden="true"
-                >
-                  <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                </svg>
+                </div>
+                <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-sm dark:bg-blue-200 dark:text-blue-800 ms-3">
+                  5.0
+                </span>
               </div>
-              <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-sm dark:bg-blue-200 dark:text-blue-800 ms-3">
-                5.0
-              </span>
-            </div>
 
-            {/* Price & CTA */}
-            <div className="flex items-center justify-between">
-              <span className="text-3xl font-bold text-gray-900 dark:text-white">
-                $599
-              </span>
-              <a
-                href="#"
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Add to cart
-              </a>
+              {/* Price & CTA */}
+              <div className="flex items-center justify-between">
+                <span className="text-3xl font-bold text-gray-900 dark:text-white">
+                  $599
+                </span>
+
+                <a
+                  href="#"
+                  className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                >
+                  Add to cart
+                </a>
+              </div>
             </div>
           </div>
         </div>

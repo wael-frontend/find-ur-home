@@ -2,11 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* All other CSS rules should come after */
-html, body, #root {
-  height: 100%;
-}
-/* ... rest of your CSS */
+/* All other CSS rules should come after */ rest of your CSS */
 html, body, #root {
   height: 100%;
   width: 100%;

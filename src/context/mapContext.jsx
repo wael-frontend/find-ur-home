@@ -6,11 +6,7 @@ const MapClickContext = createContext();
 
 export function MapClickProvider({ children }) {
   const { position } = UseGeolocation();
-  const [clickedPosition, setClickedPosition] = useState({
-    lat: 41.6028735430267,
-    lng: -6.998123322114905,
-  });
-  console.log(position);
+  const [clickedPosition, setClickedPosition] = useState({});
   useEffect(() => {
     if (position) {
       setClickedPosition(position);

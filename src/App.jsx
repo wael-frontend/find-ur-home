@@ -3,6 +3,7 @@ import "./App.css";
 import Applayout from "./ui/Applayout";
 import About from "./pages/about";
 import Homepage from "./pages/home/homepage";
+import Singup from "./pages/Auth/singup";
 import Listings from "./pages/Listings/Listing";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { MapClickProvider } from "./context/mapContext";
@@ -22,6 +23,7 @@ function App() {
               <Route path="about" element={<About />} />
               <Route path="listing" element={<Listings />} />
             </Route>
+            <Route path="/signup" element={<Singup />} />
           </Routes>
         </BrowserRouter>
       </MapClickProvider>

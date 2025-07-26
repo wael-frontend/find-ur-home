@@ -1,7 +1,10 @@
 import PropTypes from "prop-types";
-export default function FileInput({ className = "", ...props }) {
+import { forwardRef } from "react";
+
+const FileInput = forwardRef(({ className = "", ...props }, ref) => {
   return (
     <input
+      ref={ref}
       type="file"
       className={`text-[1.4rem] rounded-sm
         file:font-inherit file:font-medium
@@ -16,7 +19,12 @@ export default function FileInput({ className = "", ...props }) {
       {...props}
     />
   );
-}
+});
+
+FileInput.displayName = "FileInput"; // ✅ Fixes the ESLint warning
+
 FileInput.propTypes = {
   className: PropTypes.string,
 };
+
+export default FileInput;
