@@ -1,10 +1,10 @@
 export default function AvatarHeader() {
   return (
-    <div className="w-[50px] ">
+    <div className=" flex justify-between ">
       <img
-        src="/public/houseLogo.png"
+        src="/houseLogo.png"
         alt=""
-        className=" h-[90px] mr-[50px] block w-14 aspect-square object-cover object-center rounded-full  outline-[var(--color-grey-100)]"
+        className=" h-[70px] mr-[50px] block w-20 aspect-square object-cover object-center rounded-full  outline-[var(--color-grey-100)]"
       />
     </div>
   );

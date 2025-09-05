@@ -7,7 +7,7 @@ const Input = forwardRef(({ type, ...rest }, ref) => {
       type={type}
       {...rest}
       ref={ref} // Forward the ref here!
-      className="border border-grey-300 bg-grey-0 rounded-md px-4 py-2
+      className="border border-[#5E936C] bg-grey-0 rounded-md px-4 py-2
                  text-sm w-full
                  sm:text-base sm:px-5 sm:py-2.5"
     />

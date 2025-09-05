@@ -7,14 +7,10 @@ export default function ResponsiveMenu({ open }) {
         <motion.div
           initial={{ opacity: 0, y: -100 }}
           animate={{ opacity: 1, transition: { duration: 0.5 }, y: 0 }}
-          className="absolute  top-20 left-0 w-full h-screen"
+          className="absolute top-20 left-0 w-full h-screen z-[100] "
         >
-          <div
-            className="text-xl font-semibold uppercase
-          bg-blue-400 text-white py-10 m-6 rounded-3xl sm:hidden
-          "
-          >
-            <ul className="flex flex-col justify-center items-center gap-10 ">
+          <div className="bg-green-500/20 backdrop-blur-md border-b border-green-400/80 text-white py-10 m-6 rounded-3xl sm:hidden">
+            <ul className="flex flex-col justify-center items-center gap-10 text-xl font-semibold uppercase">
               <li>home</li>
               <li>About</li>
               <li>profile</li>

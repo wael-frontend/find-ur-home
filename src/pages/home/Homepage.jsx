@@ -1,17 +1,94 @@
-import { useListingData } from "../../feateures/Listing/useListingData";
 import CartList from "../../ui/CartList";
-import Map from "../../ui/Map";
+import Footer from "../../ui/Footer";
+import transition from "../../ui/transition";
+import { motion } from "framer-motion";
+import HorisontalSection from "../../ui/HorisontalSection";
+import Témoignages from "../../ui/OurClientsetion";
+import ImageCityGallery from "../../ui/PopularCity";
+function Homepage() {
+  /*  const stringhd1 = "ilovyou";
+  const stringhd2 = "youlovei"; */
 
-export default function Homepage() {
-  const { listings } = useListingData();
-  return (
-    <div className="h-screen grid grid-cols-2 gap-7 ">
-      <div className="mt-[100px]  lg:col-span-1 max-sm:col-span-2 overflow-scroll ">
-        <CartList />
-      </div>
-      <div className="  h-[100%] col-span-1 max-sm:hidden ">
-        <Map />
-      </div>
-    </div>
+  /*   function compaireTwoword(str1, str2) {
+    const freq1 = {};
+    const freq2 = {};
+    for (let char1 of str1) {
+      freq1[char1] = (freq1[char1] || 0) + 1;
+    }
+    for (let char2 of str2) {
+      freq2[char2] = (freq2[char2] || 0) + 1;
+    }
+    if (str1.length !== str2.length) {
+      return false;
+    } else {
+      return true;
+    }
+  } */
+  /*   console.log(compaireTwoword(stringhd1, stringhd2));
+   */ return (
+    <motion.div
+      transition={{ duration: 2 }}
+      className="min-h-screen w-full flex flex-col overflow-x-hidden"
+    >
+      {/* ===== HERO SECTION ===== */}
+      <motion.div
+        className="bg-cover bg-center h-[90vh] "
+        style={{ backgroundImage: "url('header_img.png')" }}
+      >
+        <div className="container text-center mx-auto px-6 md:px-20 lg:px-32 h-full flex items-center justify-center">
+          <motion.h2
+            initial={{ opacity: 0, translateX: "2%" }}
+            whileInView={{ opacity: 1, translateX: 0 }}
+            transition={{ duration: 1 }}
+            className="text-4xl sm:text-6xl md:text-[70px] font-semibold text-[#E8FFD7] leading-tight"
+          >
+            Find The Houses, Apartments In Your Favorite Location
+          </motion.h2>
+        </div>
+      </motion.div>
+
+      <section
+        className="w-full  bg-contain bg-center"
+        style={{ backgroundImage: "url('bedroom.jpg')" }}
+      >
+        <HorisontalSection />
+      </section>
+      <section className="py-0 text-center">
+        <motion.h5
+          initial={{ opacity: 0, translateX: "2%" }}
+          whileInView={{ opacity: 1, translateX: 0 }}
+          transition={{ duration: 1 }}
+          className="pb-15 pt-2 text-6xl font-bold tracking-tight lg:mt- lg:text-6xl text-[#E43636] uppercase max-sm:text-3xl sm:text-3xl max-sm:mt-24"
+        >
+          Properties For Rent
+        </motion.h5>
+        <motion.div
+          initial={{ opacity: 0, translateX: "4%" }}
+          whileInView={{ opacity: 1, translateX: 0 }}
+          transition={{ duration: 0.5 }}
+          className="grid  md:px-0 lg:grid-cols-3 md:grid-cols-2 gap-0 lg:px-52 bg-contain bg-center"
+        >
+          <CartList />
+        </motion.div>
+      </section>
+      <section className="py-20 bg-gradient-to-tr from-[#E43636] to-gray-900">
+        <Témoignages />
+      </section>
+      <section className=" bg-gray-950">
+        <motion.h1
+          initial={{ opacity: 0, translateX: "4%" }}
+          whileInView={{ opacity: 1, translateX: 0 }}
+          transition={{ duration: 1 }}
+          className=" text-4xl font-bold tracking-tight text-[#E43636] uppercase max-sm:text-3xl pt-25 text-center"
+        >
+          Most Popular <h1 className="text-white text-6xl">Places</h1>
+        </motion.h1>
+        <ImageCityGallery />
+      </section>
+
+      <Footer />
+    </motion.div>
   );
 }
+
+export default transition(Homepage);

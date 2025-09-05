@@ -2,12 +2,12 @@ import PropTypes from "prop-types";
 export default function Button({ type = "button", children, onClick }) {
   const isPrimary = type === "primary";
   const className = isPrimary
-    ? "w-[100px] h-[50px] rounded-[4px] bg-blue-200 text-white hover:cursor-pointer"
-    : "w-[100px] h-[50px] rounded-[4px] bg-blue-500 text-white hover:cursor-pointer";
+    ? "w-[100px] h-[40px] rounded-[4px]  bg-[#E43636] text-[#F6EFD2] hover:cursor-pointer "
+    : "w-[100px] h-[40px] rounded-[4px] bg-[#E43636] text-[#F6EFD2] hover:cursor-pointer";
 
   return (
     <button
-      type={isPrimary ? "submit" : "button"} // This line is essential!
+      type={isPrimary ? "submit" : "button"}
       className={className}
       onClick={onClick}
     >
@@ -17,7 +17,7 @@ export default function Button({ type = "button", children, onClick }) {
 }
 
 Button.propTypes = {
-  type: PropTypes.string, // e.g. "primary" or "secondary"
+  type: PropTypes.string,
   children: PropTypes.node,
   onClick: PropTypes.func,
 };

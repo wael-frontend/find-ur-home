@@ -1,4 +1,4 @@
-import supabase from "./supabase";
+import { supabase } from "./supabase";
 import { supabaseUrl } from "./supabase";
 export async function getListings() {
   const { data, error } = await supabase.from("listings").select("*");
@@ -10,6 +10,12 @@ export async function getListings() {
 }
 
 export async function CreateListing(newlisting) {
+  const { data: sessionData } = await supabase.auth.getSession();
+  if (!sessionData) {
+    throw new Error("You must be logged in to create a listing");
+  }
+  const Userid = sessionData.session.user.id;
+  const Useremail = sessionData.session.user.email;
   const isAlreadyUploaded = newlisting?.image?.startsWith?.(supabaseUrl);
 
   let imagePath = newlisting.image;
@@ -35,7 +41,8 @@ export async function CreateListing(newlisting) {
     .insert([
       {
         ...newlisting,
-
+        user_id: Userid,
+        user_email: Useremail,
         image: imagePath,
       },
     ])

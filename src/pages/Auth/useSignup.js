@@ -1,9 +1,9 @@
 import { useMutation } from "@tanstack/react-query";
-import { singUpuser } from "../../Services/apiAutho";
+import { signUpUser } from "../../Services/apiAutho";
 
 export default function useSignup() {
   const { mutate: signup, isLoading } = useMutation({
-    mutationFn: singUpuser,
+    mutationFn: signUpUser,
   });
   return { signup, isLoading };
 }

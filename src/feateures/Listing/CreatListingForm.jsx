@@ -3,23 +3,20 @@ import Form from "../../ui/Form";
 import FormRow from "../../ui/FormRow";
 import Input from "../../ui/Input";
 import Moadal from "../../ui/Moadal";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Button from "../../ui/Button";
 import useCretListing from "../Listing/useCretListing";
 import FileInput from "../../ui/FileInput";
-import { UseGeolocation } from "../../helpers/UseGeolocation";
 import { useMapClick } from "../../context/mapContext";
 import { useNavigate } from "react-router-dom";
-import { getCityFromCoords } from "../../Services/getCityFromCoords";
-import convertFlagCode from "../../helpers/convertFlagCode";
-export default function CreatListingForm() {
+import PropTypes from "prop-types";
+export default function CreatListingForm({ openModal, setOpenmodal }) {
   const navigate = useNavigate();
-  const [flag, setFlag] = useState("");
   const { clickedPosition } = useMapClick();
-  const [CityName, setCityName] = useState("");
-  const [open, setOpen] = useState(true);
-  const { register, handleSubmit, reset, setValue } = useForm();
-  const { creatListingf } = useCretListing();
+  const { register, handleSubmit, reset, setValue, formState } = useForm();
+  const { creatListingf, isCreating } = useCretListing();
+  const { errors } = formState;
+
   function onSubmit(data) {
     const image = typeof data.image === "string" ? data.image : data.image[0];
 
@@ -28,22 +25,16 @@ export default function CreatListingForm() {
       {
         onSuccess: () => {
           reset();
+          navigate("/");
         },
       }
     );
+    console.log(data);
   }
   useEffect(() => {
     async function fetchCity() {
       if (clickedPosition.lat && clickedPosition.lng) {
-        const { City, country, Country_code } = await getCityFromCoords(
-          clickedPosition.lat,
-          clickedPosition.lng
-        );
-        console.log(country);
-        console.log(Country_code);
-        setCityName(City);
-        setFlag(convertFlagCode(Country_code));
-        setValue("city", City.city);
+        setValue("city", clickedPosition.city || "");
         setValue("lat", parseFloat(clickedPosition.lat));
         setValue("lng", parseFloat(clickedPosition.lng));
       }
@@ -52,7 +43,7 @@ export default function CreatListingForm() {
   }, [clickedPosition, setValue]);
   //const { getPosition, position } = UseGeolocation();
   return (
-    <Moadal open={open}>
+    <Moadal open={openModal}>
       <Form noValidate type="form" onSubmit={handleSubmit(onSubmit)}>
         <FormRow labels="city name">
           <Input
@@ -75,6 +66,7 @@ export default function CreatListingForm() {
             {...register("descount", { required: "This field is required" })}
           />
         </FormRow>
+
         <FormRow labels="number of bathroom">
           <Input
             id="bathroom"
@@ -97,6 +89,21 @@ export default function CreatListingForm() {
             className=" border border-gray-300 bg-gray-50 rounded p-[0.8rem_1.2rem] w-[280px] mt-6"
           />
         </FormRow>
+        <FormRow labels="Your number">
+          <Input
+            id="usernumber"
+            type="number"
+            {...register("usernumber", {
+              required:
+                "This field is required so the owner can call you about the house",
+            })}
+          />
+          {errors.usernumber && (
+            <p className="text-red-500 text-sm mt-1">
+              {errors.usernumber.message}
+            </p>
+          )}
+        </FormRow>
         <FormRow labels="lat">
           <Input
             id="lat"
@@ -104,6 +111,7 @@ export default function CreatListingForm() {
             {...register("lat", { required: "This field is required" })}
           />
         </FormRow>
+
         <FormRow labels="lng">
           <Input
             id="lng"
@@ -111,6 +119,7 @@ export default function CreatListingForm() {
             {...register("lng", { required: "This field is required" })}
           />
         </FormRow>
+
         <FileInput
           id="image"
           accept="image/*"
@@ -118,19 +127,29 @@ export default function CreatListingForm() {
             required: "this field is requerd",
           })}
         />
-        <div className="flex ">
+        <div className="flex  gap-14">
           <Button
             type="secondary"
             onClick={(e) => {
               e.preventDefault();
-              setOpen(false);
+              setOpenmodal(!openModal);
             }}
           >
             Close
           </Button>
+
+          <button
+            type="submit"
+            className="w-[100px] h-[40px] rounded-[4px]  bg-[#18d4b5] text-[#F6EFD2] hover:cursor-pointer"
+          >
+            {isCreating ? " Submiting..." : "submin"}
+          </button>
         </div>
-        <button type="submit">Submit</button>
       </Form>
     </Moadal>
   );
 }
+CreatListingForm.propTypes = {
+  setOpenmodal: PropTypes.func.isRequired,
+  openModal: PropTypes.bool.isRequired,
+};

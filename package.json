@@ -12,7 +12,8 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
-    "@mui/icons-material": "^5.15.16",
+    "@material-tailwind/react": "^3.0.0-beta.24",
+    "@mui/icons-material": "^5.18.0",
     "@mui/material": "^5.15.16",
     "@supabase/supabase-js": "^2.50.0",
     "@tailwindcss/forms": "^0.5.10",
@@ -22,7 +23,9 @@
     "@tanstack/react-query-devtools": "^4.40.0",
     "dotenv": "^17.2.0",
     "framer-motion": "^12.18.1",
+    "gsap": "^3.13.0",
     "leaflet": "^1.9.4",
+    "lucide-react": "^0.541.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-bits": "^1.0.5",
@@ -30,6 +33,7 @@
     "react-hook-form": "^7.59.0",
     "react-leaflet": "^4.2.1",
     "react-router-dom": "^6.30.1",
+    "swiper": "^11.2.10",
     "three": "^0.177.0"
   },
   "devDependencies": {
