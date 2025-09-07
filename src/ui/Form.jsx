@@ -8,9 +8,9 @@ export default function Form({ onSubmit, type = "form", children, ...props }) {
     border border-gray-100 rounded-md
     bg-white
     w-[90%] md:w-[70%]
-    ml-[1rem] md:ml-[250px]
+    ml-[4rem] md:ml-[250px]
     h-[80vh] md:h-[100%]
-    max-sm:bg-blue-200 mt-[80px]
+    max-sm:bg-blue-200 mt-[60px]
   `;
 
   const modalClasses = "w-[90vw] md:w-[80rem]";

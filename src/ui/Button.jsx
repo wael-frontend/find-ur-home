@@ -2,8 +2,8 @@ import PropTypes from "prop-types";
 export default function Button({ type = "button", children, onClick }) {
   const isPrimary = type === "primary";
   const className = isPrimary
-    ? "w-[100px] h-[40px] rounded-[4px]  bg-[#E43636] text-[#F6EFD2] hover:cursor-pointer "
-    : "w-[100px] h-[40px] rounded-[4px] bg-[#E43636] text-[#F6EFD2] hover:cursor-pointer";
+    ? "w-[100px] h-[40px] rounded-[4px]  bg-indigo-600 text-[#F6EFD2] hover:cursor-pointer "
+    : "w-[100px] h-[40px] rounded-[4px] bg-indigo-600 text-[#F6EFD2] hover:cursor-pointer";
 
   return (
     <button

@@ -26,10 +26,7 @@ function Homepage() {
   } */
   /*   console.log(compaireTwoword(stringhd1, stringhd2));
    */ return (
-    <motion.div
-      transition={{ duration: 2 }}
-      className="min-h-screen w-full flex flex-col overflow-x-hidden"
-    >
+    <motion.dev className="min-h-screen w-full flex flex-col overflow-x-hidden">
       {/* ===== HERO SECTION ===== */}
       <motion.div
         className="bg-cover bg-center h-[90vh] "
@@ -58,7 +55,7 @@ function Homepage() {
           initial={{ opacity: 0, translateX: "2%" }}
           whileInView={{ opacity: 1, translateX: 0 }}
           transition={{ duration: 1 }}
-          className="pb-15 pt-2 text-6xl font-bold tracking-tight lg:mt- lg:text-6xl text-[#E43636] uppercase max-sm:text-3xl sm:text-3xl max-sm:mt-24"
+          className="pb-15 pt-20 text-6xl font-bold tracking-tight lg:mt- lg:text-6xl text-[#E43636] uppercase max-sm:text-3xl sm:text-3xl max-sm:mt-24"
         >
           Properties For Rent
         </motion.h5>
@@ -66,7 +63,7 @@ function Homepage() {
           initial={{ opacity: 0, translateX: "4%" }}
           whileInView={{ opacity: 1, translateX: 0 }}
           transition={{ duration: 0.5 }}
-          className="grid  md:px-0 lg:grid-cols-3 md:grid-cols-2 gap-0 lg:px-52 bg-contain bg-center"
+          className="grid pb-16 md:px-0 lg:grid-cols-3 md:grid-cols-2 gap-0 lg:px-52 bg-contain bg-center"
         >
           <CartList />
         </motion.div>
@@ -87,7 +84,7 @@ function Homepage() {
       </section>
 
       <Footer />
-    </motion.div>
+    </motion.dev>
   );
 }
 

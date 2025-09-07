@@ -11,7 +11,6 @@ import { useUrlPosition } from "../helpers/useUrlposition";
 import { UseGeolocation } from "../helpers/UseGeolocation";
 import { useEffect, useState } from "react";
 import { useMapClick } from "../context/mapContext";
-import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { getCityFromCoords } from "../Services/getCityFromCoords";
 import { supabase } from "../Services/supabase";
@@ -72,11 +71,11 @@ export default function MapComponent() {
 
   const isPositionReady = initialLat !== undefined && initialLng !== undefined;
   if (!isPositionReady) {
-    return <p className="text-center mt-8">Loading map...</p>;
+    return <p className="text-center mt-0">Loading map...</p>;
   }
 
   return (
-    <div className="w-full h-screen mt-[40px]">
+    <div className="w-full h-screen mt-[0px] ml-10">
       <MapContainer
         center={[initialLat, initialLng]}
         zoom={13}

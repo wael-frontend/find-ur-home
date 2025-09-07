@@ -13,7 +13,8 @@ import PropTypes from "prop-types";
 export default function CreatListingForm({ openModal, setOpenmodal }) {
   const navigate = useNavigate();
   const { clickedPosition } = useMapClick();
-  const { register, handleSubmit, reset, setValue, formState } = useForm();
+  const { register, handleSubmit, reset, setValue, formState, getValues } =
+    useForm();
   const { creatListingf, isCreating } = useCretListing();
   const { errors } = formState;
 
@@ -56,14 +57,27 @@ export default function CreatListingForm({ openModal, setOpenmodal }) {
           <Input
             id="price"
             type="number"
-            {...register("price", { required: "This field is required" })}
+            {...register("price", {
+              valueAsNumber: true,
+              required: "This field is required",
+              min: {
+                value: 1,
+                message: "Capacity at least should be 1",
+              },
+            })}
           />
         </FormRow>
-        <FormRow labels="descount">
+        <FormRow labels="discount">
           <Input
             id="descount"
             type="number"
-            {...register("descount", { required: "This field is required" })}
+            {...register("descount", {
+              valueAsNumber: true,
+              required: "This field is required",
+              validate: (value) =>
+                value <= getValues().price ||
+                "discount should be less than  regular price ",
+            })}
           />
         </FormRow>
 

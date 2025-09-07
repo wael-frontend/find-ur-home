@@ -4,7 +4,9 @@ import CartList from "../../ui/CartList";
 import useUser from "../Auth/useUser";
 import MapComponent from "../../ui/MapComponent";
 import { motion } from "framer-motion";
-import Button from "../../ui/Button";
+import { MapRounded } from "@mui/icons-material";
+import Searchbar from "../../ui/Searchbar";
+import TableOpirarion from "../../feateures/Listing/TableOpirarion";
 //import Servicescomp from "../../components/Servicescomp";
 export default function Listings() {
   const { user } = useUser();
@@ -14,54 +16,61 @@ export default function Listings() {
   console.log(user);
   return (
     <>
-      <div className="min-h-screen w-full flex flex-col overflow-hidden justify-center ">
+      <div className="min-h-screen w-full grid lg:grid-cols-2 max-sm:grid-cols-1  ">
         {/* Hero Section */}
-
-        <motion.h2
-          initial={{ opacity: 0, translateX: "3%" }}
-          whileInView={{ opacity: 1, translateX: 0 }}
-          transition={{ duration: 2 }}
-          className="pb-5 pt-40 text-4xl text-center font-bold tracking-tight lg:mt- lg:text-4xl text-[#E43636] uppercase max-sm:text-3xl sm:text-3xl max-sm:mt-24"
-        >
-          {role === "landlord"
-            ? "Create or remove your home cards"
-            : "Home Recommendation For you"}
-        </motion.h2>
-        {role === "landlord" && (
-          <Button
-            onClick={() => {
-              setOpenForm(!openForm);
-            }}
-          >
-            Add a new home
-          </Button>
-        )}
-        {openForm && (
-          <CreatListingForm openModal={openForm} setOpenmodal={setOpenForm} />
-        )}
-        <section className=" text-center">
-          <motion.div
-            initial={{ opacity: 0, translateX: "4%" }}
+        <div className="">
+          {/*        <motion.h2
+            initial={{ opacity: 0, translateX: "3%" }}
             whileInView={{ opacity: 1, translateX: 0 }}
-            transition={{ duration: 0.5 }}
-            className="grid px-6 md:px-12 lg:px-70 lg:grid-cols-3 md:grid-cols-2 gap-8"
+            transition={{ duration: 2 }}
+            className="pb-5 pt-0 text-4xl text-center font-bold tracking-tight  lg:text-2xl text-black uppercase max-sm:text-3xl sm:text-3xl max-sm:mt-24"
           >
-            <CartList />
-          </motion.div>
-        </section>
+            {role === "landlord"
+              ? "Create or remove your home cards"
+              : "Home Recommendation For you"}
+          </motion.h2> */}
+          <div className="mt-32">
+            <TableOpirarion />
+          </div>
+          {role === "landlord" && (
+            <button
+              className="w-[110px] h-[50px] rounded-[4px]  bg-blue-500 text-[#F6EFD2] hover:cursor-pointer mt-6 pb-10"
+              onClick={() => {
+                setOpenForm(!openForm);
+              }}
+            >
+              Add a new home
+            </button>
+          )}
+          {openForm && (
+            <CreatListingForm openModal={openForm} setOpenmodal={setOpenForm} />
+          )}
+          <section className=" text-center">
+            <motion.div
+              initial={{ opacity: 0, translateX: "4%" }}
+              whileInView={{ opacity: 1, translateX: 0 }}
+              transition={{ duration: 0.5 }}
+              className="grid px-6 md:px-12 lg:px-20 lg:grid-cols-2 md:grid-cols-2 gap-0 "
+            >
+              <CartList />
+            </motion.div>
+          </section>
+        </div>
         <motion.div
-          className="mb-40 w-full flex justify-center h-screen lg:w-[400px] lg:h-[400px] z-10 "
+          className=" w-full  justify-center h-screen lg:w-[400px] lg:h-[400px] z-10 mt-32 "
           initial={{ opacity: 0, translateX: "2%" }}
           whileInView={{ opacity: 1, translateX: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <Button
+          <Searchbar />
+          <button
+            className="w-[110px] h-[50px] rounded-[4px]  bg-blue-500 text-[#F6EFD2] hover:cursor-pointer"
             onClick={() => {
               setOpenMap(!openMap);
             }}
           >
-            {!openMap ? " Open the map" : "close the map"}
-          </Button>
+            <MapRounded /> {!openMap ? " Open the map" : "close the map"}
+          </button>
           <div className="w-[80%] lg:w-full">{openMap && <MapComponent />}</div>
         </motion.div>
       </div>

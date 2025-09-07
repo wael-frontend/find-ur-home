@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../Services/supabase";
 import Spinner from "./Spinner";
-import Button from "./Button";
 import {
   BathtubOutlined,
   BedOutlined,
@@ -9,31 +8,58 @@ import {
   LocationOn,
 } from "@mui/icons-material";
 import useUser from "../pages/Auth/useUser";
+import { useSearchParams } from "react-router-dom";
 
 export default function CartList() {
   const [listeng, setlesting] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 3; // cards per page 👈 you can change
-
+  const itemsPerPage = 4; // cards per page 👈 you can change
+  const [searchParams] = useSearchParams();
   const { user } = useUser();
-  const role = user.user_metadata.roleuser;
+  //const role = user.user_metadata.roleuser;
 
   useEffect(() => {
     async function fetchlesting() {
+      const filtervalue = searchParams.get("discount") || "all";
+      const sortBy = searchParams.get("sortBy") || "asc";
+      const [field, derection] = sortBy.split("-");
+      const modifier = derection === "asc" ? 1 : -1;
+
+      console.log(filtervalue);
+      let filteData;
       if (!user) return;
       if (user.user_metadata.roleuser === "landlord") {
         const { data } = await supabase
           .from("listings")
           .select("*")
           .eq("user_id", user.id);
-        setlesting(data);
+        //filter
+        if (filtervalue === "all") filteData = data;
+        if (filtervalue === "with-no-discount")
+          filteData = data.filter((Home) => Home.descount === 0);
+        if (filtervalue === "with-discount")
+          filteData = data.filter((Home) => Home.descount > 0);
+        // sort
+        const sortedCabins = filteData.sort(
+          (a, b) => (a[field] - b[field]) * modifier
+        );
+        setlesting(sortedCabins);
       } else if (user.user_metadata.roleuser === "renter") {
         const { data } = await supabase.from("listings").select("*");
-        setlesting(data);
+        if (filtervalue === "all") filteData = data;
+        if (filtervalue === "with-no-discount")
+          filteData = data.filter((Home) => Home.descount === 0);
+        if (filtervalue === "with-discount")
+          filteData = data.filter((Home) => Home.descount > 0);
+        // sort
+        const sortedCabins = filteData.sort(
+          (a, b) => (a[field] - b[field]) * modifier
+        );
+        setlesting(sortedCabins);
       }
     }
     fetchlesting();
-  }, [user]);
+  }, [user, searchParams]);
 
   if (!listeng || listeng.length === 0)
     return (
@@ -87,6 +113,7 @@ export default function CartList() {
             <p className="text-lg font-bold text-blue-600">
               {listing.price} DHS / month
             </p>
+            <p className="text-lg font-bold text-red-600">{listing.descount}</p>
             <p className="text-sm text-gray-400">⭐ 4.5 (32)</p>
           </div>
 
