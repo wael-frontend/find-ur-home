@@ -1,10 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: "class", // 👈 Add this line
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
 
-    // 👇 Add this line to enable styles for Material Tailwind components
     "./node_modules/@material-tailwind/react/components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {

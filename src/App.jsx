@@ -10,7 +10,9 @@ import Login from "./pages/Auth/login";
 import ProtectedPage from "./ui/ProtectedPage";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import Profileoage from "./pages/profile/profileoage";
+import Dashboard from "./pages/dashboard/Dashboard";
 import { AnimatePresence } from "framer-motion";
+import { Toaster } from "react-hot-toast";
 const queryClient = new QueryClient({
   defaultOptions: {
     staleTime: 0,
@@ -35,6 +37,7 @@ function App() {
                   <Route index element={<Homepage />} />
                   <Route path="listing" element={<Listings />} />
                   <Route path="profile" element={<Profileoage />} />
+                  <Route path="dashboard" element={<Dashboard />} />
                 </Route>
               </Route>
 
@@ -43,6 +46,26 @@ function App() {
             </Routes>
           </AnimatePresence>
         </BrowserRouter>
+        <Toaster
+          position="top-center"
+          gutter={12}
+          containerStyle={{ margin: "2px" }}
+          toastOptions={{
+            success: {
+              duration: 3000,
+            },
+            error: {
+              duration: 5000,
+            },
+            style: {
+              fontSize: "16px",
+              maxWidth: "500px",
+              padding: "16px 24px",
+              backgroundColor: "white",
+              color: "var(--color-grey-700)",
+            },
+          }}
+        />
       </MapClickProvider>
     </QueryClientProvider>
   );

@@ -12,7 +12,7 @@ export default function Filter({ options, filterfield }) {
   }
 
   return (
-    <div className="flex flex-wrap gap-2 justify-center border border-gray-200 bg-white shadow-sm rounded-md p-2 sm:w-[100%] lg:w-[100%] ">
+    <div className="flex flex-wrap gap-2 justify-center border border-gray-200 bg-white/40 shadow-sm rounded-md p-2 sm:w-[100%] lg:w-[60%] ">
       {options.map((item) => (
         <button
           key={item.value}
@@ -20,7 +20,7 @@ export default function Filter({ options, filterfield }) {
           className={`rounded-md px-3 py-1.5 text-sm font-medium transition-colors 
             ${
               active === item.value
-                ? "bg-indigo-600 text-white"
+                ? "bg-red-300 text-white"
                 : "bg-white text-gray-700 hover:bg-indigo-600 hover:text-white"
             }`}
         >

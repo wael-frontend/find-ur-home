@@ -17,9 +17,9 @@ export default function UserAvatar() {
         <img
           src={avatar || "default-user.jpg"}
           alt="User Avatar"
-          className="w-14 h-14 rounded-[100%]  md:hidden lg:block"
+          className="w-12 h-12 rounded-[100%] md:hidden lg:block"
         />
-        <p className="text-white  md:hidden lg:block font-medium mt-3.5  ">
+        <p className="text-white  md:hidden lg:block font-medium mt-3.5  mr-2">
           {full_name}
         </p>
       </div>

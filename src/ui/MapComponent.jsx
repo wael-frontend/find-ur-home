@@ -15,6 +15,7 @@ import PropTypes from "prop-types";
 import { getCityFromCoords } from "../Services/getCityFromCoords";
 import { supabase } from "../Services/supabase";
 import useUser from "../pages/Auth/useUser";
+import SearchControl from "./SearchControl";
 
 // Fix leaflet marker icon paths
 delete L.Icon.Default.prototype._getIconUrl;
@@ -75,16 +76,17 @@ export default function MapComponent() {
   }
 
   return (
-    <div className="w-full h-screen mt-[0px] ml-10">
+    <div className="w-full h-[50%] mt-[0px]  ">
       <MapContainer
         center={[initialLat, initialLng]}
         zoom={13}
-        className="h-[80%] w-full"
+        className="h-[500px] w-full"
       >
         <TileLayer
           attribution="&copy; OpenStreetMap contributors"
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+        <SearchControl setClickedPosition={setClickedPosition} />
         <MapClickHandler onCitySelect={(city) => setClickedPosition(city)} />
         {listeng.map((homeposition) => (
           <Marker

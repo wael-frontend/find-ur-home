@@ -41,7 +41,7 @@ export default function Services() {
             initial={{ opacity: 0, translateX: "4%" }}
             whileInView={{ opacity: 1, translateX: 0 }}
             transition={{ duration: 1 }}
-            className=" text-6xl font-bold tracking-tight text-[#E43636] uppercase max-sm:text-3xl pt-40"
+            className=" text-4xl font-bold tracking-tight text-white uppercase max-sm:text-3xl pt-20"
           >
             Our Services
           </motion.h1>
@@ -49,7 +49,7 @@ export default function Services() {
             initial={{ opacity: 0, translateX: "4%" }}
             whileInView={{ opacity: 1, translateX: 0 }}
             transition={{ duration: 1 }}
-            className="text-base max-sm:text-lg font-light tracking-wide text-white max-w-xl  pt-10 "
+            className="text-base max-sm:text-lg font-light tracking-wide text-white max-w-xl  pt-6"
           >
             We help you rent your apartment or find the perfect place that
             matches your lifestyle.
@@ -65,7 +65,7 @@ export default function Services() {
             initial={{ opacity: 0, translateX: "4%" }}
             whileInView={{ opacity: 1, translateX: 0 }}
             transition={{ duration: 1 }}
-            className=" text-4xl font-bold tracking-tight text-white uppercase pt-32"
+            className=" text-4xl font-bold tracking-tight text-white uppercase "
           >
             Home feature
           </motion.h1>

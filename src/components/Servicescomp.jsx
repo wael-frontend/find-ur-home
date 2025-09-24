@@ -33,7 +33,7 @@ export default function Servicescomp() {
             className="bg-black text-white rounded-xl shadow-lg p-4 flex-1"
           >
             <div className="flex items-center justify-center -mt-12 mb-4">
-              <div className="bg-[#E43636]  w-32 h-32 max-sm:w-12 max-sm:h-12 rounded-full flex items-center justify-center shadow-md">
+              <div className="bg-[#E43636]  w-20 h-20 max-sm:w-12 max-sm:h-12 rounded-full flex items-center justify-center shadow-md">
                 {service.icon}
               </div>
             </div>

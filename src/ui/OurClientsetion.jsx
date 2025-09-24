@@ -20,12 +20,12 @@ export default function Témoignages() {
   ];
 
   return (
-    <section className="px-6 py-20 text-center">
+    <section className="px-6 py-0 text-center">
       <motion.h1
         initial={{ opacity: 0, translateX: "4%" }}
         whileInView={{ opacity: 1, translateX: 0 }}
         transition={{ duration: 1 }}
-        className="pb-5 text-6xl font-bold tracking-tight  lg:text-6xl text-white  uppercase  max-sm:text-3xl sm:text-3xl max-sm:mt-0"
+        className="pb-0 text-6xl font-bold tracking-tight  lg:text-4xl text-white  uppercase  max-sm:text-3xl sm:text-3xl max-sm:mt-0"
       >
         Témoignages : Ils nous font confiance:
       </motion.h1>

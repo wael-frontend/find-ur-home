@@ -14,7 +14,7 @@ export default function Login() {
   return (
     <section className="bg-gray-50 dark:bg-gray-900 w-full h-screen">
       <div className="flex flex-col items-center justify-center  mx-auto md:h-screen lg:py-0">
-        <div className=" items-center flex text-2xl font-semibold text-gray-900 dark:text-white">
+        <div className=" items-center flex text-2xl font-semibold text-gray-900 dark:text-white pt-28 pb-12 lg:pt-8 lg:pb-2.5">
           <img
             className="w-24 h-26 mt-2  rounded-2xl"
             src="/public/houseLogo.png"

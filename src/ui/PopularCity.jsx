@@ -13,11 +13,8 @@ const ImageCityGallery = () => {
       {/* First row: 3 images */}
       {images.slice(0, 3).map((src, i) => (
         <motion.div
-          initial={{ opacity: 0, translateY: "53%" }}
-          whileInView={{ opacity: 1, translateY: 0 }}
-          transition={{ duration: 2 }}
           key={i}
-          className="w-full h-60 overflow-hidden rounded-2xl shadow"
+          className="w-full h-50 overflow-hidden rounded-2xl shadow"
         >
           <img
             src={src}
@@ -31,9 +28,6 @@ const ImageCityGallery = () => {
       <div className="col-span-1 max-lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
         {images.slice(3, 5).map((src, i) => (
           <motion.div
-            initial={{ opacity: 0, translateY: "53%" }}
-            whileInView={{ opacity: 1, translateY: 0 }}
-            transition={{ duration: 2 }}
             key={i + 3}
             className="w-full h-60 overflow-hidden rounded-2xl shadow"
           >

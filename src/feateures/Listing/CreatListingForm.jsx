@@ -4,7 +4,6 @@ import FormRow from "../../ui/FormRow";
 import Input from "../../ui/Input";
 import Moadal from "../../ui/Moadal";
 import { useEffect } from "react";
-import Button from "../../ui/Button";
 import useCretListing from "../Listing/useCretListing";
 import FileInput from "../../ui/FileInput";
 import { useMapClick } from "../../context/mapContext";
@@ -32,6 +31,7 @@ export default function CreatListingForm({ openModal, setOpenmodal }) {
     );
     console.log(data);
   }
+
   useEffect(() => {
     async function fetchCity() {
       if (clickedPosition.lat && clickedPosition.lng) {
@@ -43,11 +43,21 @@ export default function CreatListingForm({ openModal, setOpenmodal }) {
     fetchCity();
   }, [clickedPosition, setValue]);
   //const { getPosition, position } = UseGeolocation();
+
   return (
     <Moadal open={openModal}>
       <Form noValidate type="form" onSubmit={handleSubmit(onSubmit)}>
+        <div className="p-3 rounded-md bg-blue-50 border border-blue-200 text-blue-700 text-sm flex items-center gap-2">
+          <span className="text-lg">ℹ️</span>
+          <p>
+            The <strong>City Name</strong>, <strong>Latitude</strong>, and{" "}
+            <strong>Longitude</strong>
+            will be filled automatically when you click on the map.
+          </p>
+        </div>
         <FormRow labels="city name">
           <Input
+            disabled
             id="listing-name"
             type="text"
             {...register("city", { required: "This field is required" })}
@@ -120,6 +130,7 @@ export default function CreatListingForm({ openModal, setOpenmodal }) {
         </FormRow>
         <FormRow labels="lat">
           <Input
+            disabled
             id="lat"
             type="number"
             {...register("lat", { required: "This field is required" })}
@@ -128,6 +139,7 @@ export default function CreatListingForm({ openModal, setOpenmodal }) {
 
         <FormRow labels="lng">
           <Input
+            disabled
             id="lng"
             type="number"
             {...register("lng", { required: "This field is required" })}
@@ -142,19 +154,19 @@ export default function CreatListingForm({ openModal, setOpenmodal }) {
           })}
         />
         <div className="flex  gap-14">
-          <Button
-            type="secondary"
+          <button
+            className="w-[100px] h-[40px] rounded-[4px]  bg-[#d41818] text-[#F6EFD2] hover:cursor-pointer"
             onClick={(e) => {
               e.preventDefault();
               setOpenmodal(!openModal);
             }}
           >
             Close
-          </Button>
+          </button>
 
           <button
             type="submit"
-            className="w-[100px] h-[40px] rounded-[4px]  bg-[#18d4b5] text-[#F6EFD2] hover:cursor-pointer"
+            className="w-[100px] h-[40px] rounded-[4px]  bg-[#1853d4] text-[#F6EFD2] hover:cursor-pointer"
           >
             {isCreating ? " Submiting..." : "submin"}
           </button>
