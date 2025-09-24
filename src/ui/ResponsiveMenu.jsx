@@ -3,6 +3,8 @@ import {
   DomainAddOutlined,
   HomeOutlined,
   LogoutOutlined,
+  Person,
+  Person2Outlined,
 } from "@mui/icons-material";
 import { motion, AnimatePresence } from "framer-motion";
 import PropTypes from "prop-types";
@@ -47,12 +49,15 @@ export default function ResponsiveMenu({ open }) {
                 </Link>
               </li>
 
-              <li>
+              <li className="w-5">
                 <Link
-                  to="/logout"
-                  className=" items-center gap-2 p-2 rounded-md hover:bg-gray-200 block"
-                ></Link>
+                  to="/"
+                  className=" items-center gap-2 p-2 rounded-md hover:bg-gray-200 flex justify-center"
+                >
+                  <Person2Outlined /> <span>Profile</span>
+                </Link>
               </li>
+
               <li>
                 <button onClick={() => Logout()}>
                   <LogoutOutlined /> <span>Logout</span>
