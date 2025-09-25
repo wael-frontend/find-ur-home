@@ -22,7 +22,7 @@ export default function AupdateUseracount() {
 
   return (
     <form
-      className="w-[50%] mx-auto  bg-emerald-600 backdrop-blur-md rounded-2xl shadow-lg p-8 text-white"
+      className="lg:w-[50%]  sm:w-[100%] mt-20 h-[80%] lg:h-[100%]  bg-emerald-600 backdrop-blur-md rounded-2xl shadow-lg p-8 text-white"
       onSubmit={handleSubmit}
     >
       {/* Avatar */}

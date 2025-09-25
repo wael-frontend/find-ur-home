@@ -3,7 +3,6 @@ import {
   DomainAddOutlined,
   HomeOutlined,
   LogoutOutlined,
-  Person,
   Person2Outlined,
 } from "@mui/icons-material";
 import { motion, AnimatePresence } from "framer-motion";
@@ -51,7 +50,7 @@ export default function ResponsiveMenu({ open }) {
 
               <li className="w-5">
                 <Link
-                  to="/"
+                  to="/profile"
                   className=" items-center gap-2 p-2 rounded-md hover:bg-gray-200 flex justify-center"
                 >
                   <Person2Outlined /> <span>Profile</span>

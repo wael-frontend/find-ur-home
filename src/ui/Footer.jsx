@@ -11,7 +11,7 @@ export default function Footer() {
       <div className="max-w-screen-xl mx-auto px-6 grid md:grid-cols-4 gap-10">
         {/* Brand & Trust */}
         <div className="space-y-4">
-          <img src="/public/houseLogo.png" alt="Logo" className="h-12" />
+          <img src="/houseLogo.png" alt="Logo" className="h-12" />
           <p className="text-gray-400">
             We are committed to delivering the best digital marketing solutions,
             building trust, and helping businesses grow.

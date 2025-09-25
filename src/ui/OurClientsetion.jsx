@@ -4,18 +4,18 @@ export default function Témoignages() {
   const services = [
     {
       image: "/default-user.jpg",
-      title: "Sarah Dubois",
-      desc: "IMZRI CONSULTING a révolutionné notre stratégie digitale. Nos ventes ont augmenté de 40% en six mois ! Leur expertise et leur accompagnement sont inégalables. Sarah Dubois, CEO de LuminaTech",
+      title: "Youssef Benali",
+      desc: "Avec RentSmart, j’ai trouvé un appartement à Casablanca en seulement 3 jours ! Le processus était simple, rapide et sans stress.",
     },
     {
       image: "/default-user.jpg",
-      title: "Marc Dupont",
-      desc: "Grâce au mentorat d'Hamza, j'ai pu structurer mon business plan et lancer ma startup avec confiance. Un partenaire précieux pour tout entrepreneur.",
+      title: "Anna Müller",
+      desc: "En tant qu’expatriée en Allemagne, j’avais peur de la recherche d’un logement. RentSmart m’a aidée à comparer et réserver un appartement sécurisé avant même mon arrivée.",
     },
     {
       image: "/default-user.jpg",
-      title: "Clara Rossi",
-      desc: "Leur formation en marketing digital a été un tournant pour mon équipe. Des méthodes concrètes et une approche très pédagogique. Fortement recommandé !.",
+      title: "Karim El Idrissi",
+      desc: "J’ai pu mettre mon appartement en location en quelques minutes. Grâce à RentSmart, j’ai trouvé un locataire fiable dès la première semaine.",
     },
   ];
 
