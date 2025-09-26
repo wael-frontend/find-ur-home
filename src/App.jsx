@@ -1,16 +1,19 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Applayout from "./ui/Applayout";
+//ui
+import AppLayout from "./ui/AppLayout";
+import ProtectedPage from "./ui/ProtectedPage";
+//pages
 import Homepage from "./pages/home/Homepage";
-import Singup from "./pages/Auth/singup";
-import Listings from "./pages/Listings/Listing";
+import Singup from "./pages/Auth/Singup";
+import Login from "./pages/Auth/login";
+import Listings from "./pages/Listings/Listings";
+import ProfilePage from "./pages/profile/ProfilePage";
+import Dashboard from "./pages/DashboardPage/Dashboard";
+//tols and context
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { MapClickProvider } from "./context/mapContext";
-import Login from "./pages/Auth/login";
-import ProtectedPage from "./ui/ProtectedPage";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import Profileoage from "./pages/profile/profileoage";
-import Dashboard from "./pages/dashboard/Dashboard";
 import { AnimatePresence } from "framer-motion";
 import { Toaster } from "react-hot-toast";
 const queryClient = new QueryClient({
@@ -29,14 +32,14 @@ function App() {
               <Route
                 element={
                   <ProtectedPage>
-                    <Applayout />
+                    <AppLayout />
                   </ProtectedPage>
                 }
               >
-                <Route path="/" element={<Applayout />}>
+                <Route path="/" element={<AppLayout />}>
                   <Route index element={<Homepage />} />
                   <Route path="listing" element={<Listings />} />
-                  <Route path="profile" element={<Profileoage />} />
+                  <Route path="profile" element={<ProfilePage />} />
                   <Route path="dashboard" element={<Dashboard />} />
                 </Route>
               </Route>
