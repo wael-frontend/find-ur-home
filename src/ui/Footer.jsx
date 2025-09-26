@@ -12,7 +12,7 @@ export default function Footer() {
         {/* Brand & Trust */}
         <div className="space-y-4">
           <img src="/houseLogo.png" alt="Logo" className="h-12" />
-          <p className="text-gray-400">
+          <p className="text-white">
             We are committed to delivering the best digital marketing solutions,
             building trust, and helping businesses grow.
           </p>
@@ -118,7 +118,7 @@ export default function Footer() {
           <h3 className="text-lg font-semibold mb-4 text-white">
             Stay In Touch
           </h3>
-          <p className="text-gray-400 mb-4">
+          <p className="text-white mb-4">
             Subscribe to get updates, offers, and digital marketing tips.
           </p>
           <form className="flex flex-col sm:flex-row gap-2">

@@ -15,9 +15,9 @@ import SideBar from "../../ui/Sidebar.jsx";
 import StatsCards from "../../ui/StatsCards.jsx";
 import StayDurationChart from "../../ui/StayDurationChart.jsx";
 import GeoTrafficMap from "../../ui/GeoTrafficMap.jsx";
-import DensityMediumOutlinedIcon from "@mui/icons-material/DensityMediumOutlined";
 import ResponsiveMenu from "../../ui/ResponsiveMenu.jsx";
 import { useState } from "react";
+import { Menu, X } from "lucide-react";
 export default function Dashboard() {
   const [open, setOPen] = useState();
   return (
@@ -26,7 +26,11 @@ export default function Dashboard() {
         className=" lg:hidden md:hidden  max-sm:block h-10 w-10 fixed left-0  "
         onClick={() => setOPen(!open)}
       >
-        <DensityMediumOutlinedIcon />
+        {open ? (
+          <X size={36} strokeWidth={2.25} />
+        ) : (
+          <Menu size={36} strokeWidth={2.25} />
+        )}
       </button>
       <SideBar />
       <ResponsiveMenu open={open} />

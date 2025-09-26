@@ -2,8 +2,8 @@ import AupdateUseracount from "../Auth/AupdateUseracount";
 import transition from "../../ui/transition";
 import SideBar from "../../ui/Sidebar";
 import ResponsiveMenu from "../../ui/ResponsiveMenu";
-import { DensityMediumOutlined } from "@mui/icons-material";
 import { useState } from "react";
+import { Menu, X } from "lucide-react";
 
 function ProfilePage() {
   const [open, setOPen] = useState();
@@ -15,7 +15,11 @@ function ProfilePage() {
           className=" lg:hidden md:hidden  max-sm:block h-10 w-10 fixed left-0  "
           onClick={() => setOPen(!open)}
         >
-          <DensityMediumOutlined />
+          {open ? (
+            <X size={36} strokeWidth={2.25} />
+          ) : (
+            <Menu size={36} strokeWidth={2.25} />
+          )}{" "}
         </button>
         <ResponsiveMenu open={open} />
       </div>

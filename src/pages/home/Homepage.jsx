@@ -91,8 +91,8 @@ function Homepage() {
         <ImageCityGallery />
       </section>
       <div
-        className="bg-gray-900 text-gray-300 bg-center bg-cover md:bg-fixed"
-        style={{ backgroundImage: "url('header_img.png')" }}
+        className="bg-gray-900 text-gray-300 bg-center bg-cover bg-fixed"
+        style={{ backgroundImage: "url('Homeserv3.png')" }}
       >
         <ContactUs />
         <Footer />

@@ -1,9 +1,9 @@
-import DensityMediumOutlinedIcon from "@mui/icons-material/DensityMediumOutlined";
 import { useState } from "react";
 import ResponsiveMenu from "../ui/ResponsiveMenu";
 import Nav from "../ui/Nav";
 import UserAvatar from "../pages/Auth/UserAvatar";
 import AvatarHeader from "../ui/AvatarHeader";
+import { Menu, X } from "lucide-react";
 export default function Applayout() {
   const [open, setOpen] = useState(false);
   return (
@@ -16,13 +16,18 @@ export default function Applayout() {
             <Nav />
           </div>
           <ResponsiveMenu open={open} />
+
           <button
             className=" text-cyan-50  xl:hidden md:hidden z-50 fixed right-2"
             onClick={() => {
               setOpen(!open);
             }}
           >
-            <DensityMediumOutlinedIcon />
+            {open ? (
+              <X size={36} strokeWidth={2.25} />
+            ) : (
+              <Menu size={36} strokeWidth={2.25} />
+            )}
           </button>
         </div>
         <div className="flex  sm:hidden mr-10">
