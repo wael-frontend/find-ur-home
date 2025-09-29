@@ -6,7 +6,6 @@ export default function SignupForm() {
   const { signup, isLoading } = useSignup();
   function onSubmit({ email, full_name, password, roleuser }) {
     signup({ password, email, full_name, roleuser });
-    console.log(email, full_name, password, roleuser);
   }
 
   return (

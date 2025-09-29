@@ -1,7 +1,6 @@
 import { supabase } from "./supabase";
 
-supabase;
-export async function signUpUser({ email, password, full_name, roleuser }) {
+export async function signUpUser({ email, full_name, password, roleuser }) {
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
@@ -14,7 +13,7 @@ export async function signUpUser({ email, password, full_name, roleuser }) {
   });
   const userid = data.user?.id;
   const useremail = data.user?.email;
-  console.log(roleuser);
+  console.log(email, password);
   await supabase.from("profiles").upsert([
     {
       id: userid,
@@ -22,6 +21,7 @@ export async function signUpUser({ email, password, full_name, roleuser }) {
       roleuser,
     },
   ]);
+  console.log(userid, useremail);
   if (error) throw error;
   return data;
 }
