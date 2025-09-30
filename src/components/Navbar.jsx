@@ -23,11 +23,7 @@ export default function Applayout() {
               setOpen(!open);
             }}
           >
-            {open ? (
-              <X size={36} strokeWidth={2.25} />
-            ) : (
-              <Menu size={36} strokeWidth={2.25} />
-            )}
+            <Menu />
           </button>
         </div>
         <div className="flex  sm:hidden mr-10">

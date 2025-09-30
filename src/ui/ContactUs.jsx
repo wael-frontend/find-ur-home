@@ -6,8 +6,8 @@ export default function ContactUs() {
   return (
     <section id="contact" className="bg-[#000000]/90  text-white py-16">
       <div
-        className="max-w-screen-xl mx-auto px-6 grid md:grid-cols-2 gap-12 bg-gray-900 text-gray-300 bg-center bg-cover bg-fixed"
-        style={{ backgroundImage: "url('Homeserv3.png')" }}
+        className="max-w-screen-xl mx-auto px-6 grid md:grid-cols-2 gap-12 bg-gray-900 text-gray-300 bg-center bg-cover "
+        style={{ backgroundImage: "url('header_img.png')" }}
       >
         {/* Contact Info */}
         <div className="space-y-6">

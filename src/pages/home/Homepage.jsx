@@ -90,10 +90,7 @@ function Homepage() {
         </motion.h1>
         <ImageCityGallery />
       </section>
-      <div
-        className="bg-gray-900 text-gray-300 bg-center bg-cover bg-fixed"
-        style={{ backgroundImage: "url('Homeserv3.png')" }}
-      >
+      <div className="bg-gray-900 text-gray-300 bg-center bg-cover bg-fixed">
         <ContactUs />
         <Footer />
       </div>
