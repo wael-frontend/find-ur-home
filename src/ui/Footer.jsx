@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function Footer() {
   return (
     <footer
-      className="bg-gray-900/20 text-gray-300 pt-12 bg-fixed bg-center bg-cover"
+      className="bg-gray-900/20 text-gray-300  bg-fixed bg-center bg-cover mt-44"
       id="devis"
     >
       <div className="max-w-screen-xl mx-auto px-6 grid md:grid-cols-4 gap-10">

@@ -1,11 +1,21 @@
-export default function AvatarHeader() {
+import PropTypes from "prop-types";
+
+export default function AvatarHeader({ isScrolled, apllaybg }) {
   return (
-    <div className=" flex justify-between ">
+    <div className=" ">
       <img
-        src="/houseLogo.png"
-        alt=""
-        className=" h-[50px] mr-[50px] block w-20 aspect-square object-cover object-center rounded-full  outline-[var(--color-grey-100)]"
+        src="/logo.png"
+        alt="logo"
+        className={`h-[40px] transition-all duration-300 ${
+          !isScrolled && !apllaybg
+            ? "invert brightness-0"
+            : "invert-0 brightness-100"
+        }`}
       />
     </div>
   );
 }
+AvatarHeader.propTypes = {
+  isScrolled: PropTypes.bool,
+  apllaybg: PropTypes.string,
+};

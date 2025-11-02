@@ -12,8 +12,8 @@ export default function UserAvatar() {
   console.log("Avatar URL:", avatar);
   console.log(full_name);
   return (
-    <div className="max-sm:hidden lg:flex items-center space-x-35">
-      <div className="flex gap-5">
+    <div className="max-sm:hidden lg:flex items-center ">
+      {/*    <div className="flex gap-5">
         <img
           src={avatar || "default-user.jpg"}
           alt="User Avatar"
@@ -22,9 +22,9 @@ export default function UserAvatar() {
         <p className="text-white  md:hidden lg:block font-medium mt-3.5  mr-2">
           {full_name}
         </p>
-      </div>
+      </div> */}
 
-      <div className="flex gap-3 mr-6 mt-3">
+      <div className="flex gap-3 ">
         <Button onClick={() => Logout()}>
           <LogoutOutlined />
         </Button>

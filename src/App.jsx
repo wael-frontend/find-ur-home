@@ -10,6 +10,7 @@ import Login from "./pages/Auth/login";
 import Listings from "./pages/Listings/Listings";
 import ProfilePage from "./pages/profile/ProfilePage";
 import Dashboard from "./pages/DashboardPage/Dashboard";
+import DeatalsListingPage from "./pages/Listings/DeatalsListingPage";
 //tols and context
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { MapClickProvider } from "./context/mapContext";
@@ -41,6 +42,10 @@ function App() {
                   <Route path="listing" element={<Listings />} />
                   <Route path="profile" element={<ProfilePage />} />
                   <Route path="dashboard" element={<Dashboard />} />
+                  <Route
+                    path="listing/:ListingID"
+                    element={<DeatalsListingPage />}
+                  />
                 </Route>
               </Route>
 

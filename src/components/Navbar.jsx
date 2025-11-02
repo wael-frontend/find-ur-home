@@ -1,32 +1,49 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ResponsiveMenu from "../ui/ResponsiveMenu";
 import Nav from "../ui/Nav";
 import UserAvatar from "../pages/Auth/UserAvatar";
 import AvatarHeader from "../ui/AvatarHeader";
-import { Menu, X } from "lucide-react";
+import { Menu } from "lucide-react";
+import { useLocation } from "react-router-dom";
+
 export default function Applayout() {
   const [open, setOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
+  const apllaybg = location.pathname.startsWith("/listing");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <>
-      <nav className=" flex w-full md:w-[100%] lg:w-[100%] fixed h-20 lg:mr-5  bg-black/50 top-0 border-b border-gray-200 dark:border-gray-700 z-40 ">
-        <AvatarHeader />
+      <nav
+        className={`fixed top-0 right-0 flex items-center justify-around   w-full px-6 lg:px-0 3xl:px-0 z-30 py-0 transition-all duration-300  h-18 ${
+          isScrolled || apllaybg
+            ? "bg-white backdrop-blur-md shadow-md text-gray-900"
+            : "bg-transparent text-white"
+        }`}
+      >
+        <AvatarHeader isScrolled={isScrolled} apllaybg={apllaybg} />
 
-        <div className=" w-full flex  sm:flex-row justify-center items-center ">
-          <div className=" relative mb text-center flex items-center gap-[200px] ">
-            <Nav />
-          </div>
+        <div>
+          <Nav />
           <ResponsiveMenu open={open} />
-
           <button
-            className=" text-cyan-50  xl:hidden md:hidden z-50 fixed right-2"
-            onClick={() => {
-              setOpen(!open);
-            }}
+            className="text-cyan-50 xl:hidden md:hidden z-50 fixed right-2"
+            onClick={() => setOpen(!open)}
           >
             <Menu />
           </button>
         </div>
-        <div className="flex  sm:hidden mr-10">
+
+        <div>
           <UserAvatar />
         </div>
       </nav>

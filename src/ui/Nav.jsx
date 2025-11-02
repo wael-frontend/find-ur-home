@@ -3,17 +3,30 @@ import { Link } from "react-router-dom";
 export default function Nav() {
   return (
     <>
-      <div className="max-sm:hidden md:block z-10 text-white  ">
-        <ul className="flex gap-16 font-serif   ">
-          <Link to="/" className="flex">
-            <li className=" hover:text-red-500 duration-300 "> Home</li>
+      <div className="max-sm:hidden md:block z-10  ">
+        <ul className="flex gap-7 mt-7   ">
+          <Link to="/" className="flex justify-center">
+            <li className="tracking-tight  py-2 rounded-full uppercase text-sm font-medium ">
+              {" "}
+              Home
+            </li>
           </Link>
           <Link to="/listing">
-            <li className=" hover:text-red-500 duration-300"> Listings</li>
+            <li className="tracking-tight  py-2 rounded-full uppercase text-sm font-medium">
+              {" "}
+              Listings
+            </li>
           </Link>
 
           <Link to="/dashboard">
-            <li className=" hover:text-red-500 duration-300">Dashbord </li>
+            <li className="tracking-tight  py-2 rounded-full uppercase text-sm font-medium">
+              Dashbord{" "}
+            </li>
+          </Link>
+          <Link to="/dashboard">
+            <li className="-tracking-wider  py-2 rounded-full uppercase text-sm font-medium">
+              contact{" "}
+            </li>
           </Link>
         </ul>
       </div>

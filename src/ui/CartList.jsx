@@ -8,17 +8,17 @@ import {
   LocationOn,
 } from "@mui/icons-material";
 import useUser from "../pages/Auth/useUser";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import PropTypes from "prop-types";
 
 export default function CartList({ count }) {
   const [listeng, setlesting] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = count; // cards per page 👈 you can change
+  const itemsPerPage = count;
   const [searchParams] = useSearchParams();
   const { user } = useUser();
   //const role = user.user_metadata.roleuser;
-
+  const navigate = useNavigate();
   useEffect(() => {
     async function fetchlesting() {
       const filtervalue = searchParams.get("discount") || "all";
@@ -80,7 +80,10 @@ export default function CartList({ count }) {
       {currentListings.map((listing) => (
         <div
           key={listing.id}
-          className="block rounded-xl shadow-md hover:shadow-xl transition lg:w-[300px] h-[470px] sm:w-[80%] bg-white overflow-hidden"
+          className="block rounded-xl  transition lg:w-[300px] h-[470px] sm:w-[80%] bg-white overflow-hidden"
+          onClick={() => {
+            navigate(`/listing/${listing.id}`);
+          }}
         >
           {/* Image + tags */}
           <div className="relative">
@@ -89,22 +92,10 @@ export default function CartList({ count }) {
               alt={listing.type}
               className="h-48 w-full object-cover"
             />
-            <span className="absolute top-2 left-2 bg-blue-500 text-white text-xs px-2 py-1 rounded">
-              {listing.type || "Apartment"}
-            </span>
-            <span
-              className={`absolute top-2 right-2 px-2 py-1 rounded text-xs ${
-                listing.status === "available"
-                  ? "bg-green-500 text-white"
-                  : "bg-red-500 text-white"
-              }`}
-            >
-              {listing.status || "Available"}
-            </span>
           </div>
 
           {/* Title + location */}
-          <div className="p-3">
+          <div className="p-3 f">
             <h3 className="font-semibold text-gray-800 truncate">
               Big house in {listing.city}
             </h3>
@@ -119,12 +110,12 @@ export default function CartList({ count }) {
                   <span className="text-sm text-gray-400 line-through">
                     {listing.price} DHS
                   </span>
-                  <span className="text-lg font-bold text-blue-600">
+                  <span className="text-lg font-bold text-[#fdcc15]">
                     {listing.price - listing.descount} DHS / month
                   </span>
                 </div>
               ) : (
-                <p className="text-lg font-bold text-blue-600">
+                <p className="text-lg font-bold text-[#fdcc15] ">
                   {listing.price} DHS / month
                 </p>
               )}
@@ -154,14 +145,6 @@ export default function CartList({ count }) {
             </div>
 
             {/* Actions */}
-            <div className="mt-4 flex flex-col gap-2">
-              <button className="bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition font-medium">
-                Request Visit
-              </button>
-              <button className="border border-gray-300 py-2 rounded-lg hover:bg-gray-100 transition font-medium">
-                Contact Landlord
-              </button>
-            </div>
           </div>
         </div>
       ))}
