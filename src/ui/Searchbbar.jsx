@@ -58,7 +58,7 @@ export default function SearchBar() {
         </div>
 
         {/* Search Button */}
-        <button className="bg-black text-white px-6 py-3 rounded-full flex items-center gap-2 hover:bg-gray-900 transition">
+        <button className="bg-black text-white px-2 py-3 rounded-full flex items-center gap-2 hover:bg-gray-900 transition">
           <Search className="w-4 h-4" />
           Search
         </button>
