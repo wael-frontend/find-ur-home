@@ -6,7 +6,7 @@ export default function Nav() {
       <div className="max-sm:hidden md:block z-10  ">
         <ul className="flex gap-7 mt-7   ">
           <Link to="/" className="flex justify-center">
-            <li className="tracking-tight  py-2 rounded-full uppercase text-sm font-medium ">
+            <li className="tracking-tight  py-2 rounded-full uppercase text-sm font-medium  underline -underline-offset-8">
               {" "}
               Home
             </li>

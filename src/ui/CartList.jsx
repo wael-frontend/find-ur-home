@@ -69,7 +69,6 @@ export default function CartList({ count }) {
       </div>
     );
 
-  // Algorithm for pagination
   const totalPages = Math.ceil(listeng.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
@@ -80,7 +79,7 @@ export default function CartList({ count }) {
       {currentListings.map((listing) => (
         <div
           key={listing.id}
-          className="block rounded-xl  transition lg:w-[300px] h-[470px] sm:w-[80%] bg-white overflow-hidden"
+          className="block rounded-xl  transition lg:w-[300px] h-[400px] sm:w-[80%] bg-white overflow-hidden "
           onClick={() => {
             navigate(`/listing/${listing.id}`);
           }}

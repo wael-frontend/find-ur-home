@@ -6,7 +6,7 @@ export default function AvatarHeader({ isScrolled, apllaybg }) {
       <img
         src="/logo.png"
         alt="logo"
-        className={`h-[40px] transition-all duration-300 ${
+        className={`h-[40px] transition-all duration-300 mr-24 ${
           !isScrolled && !apllaybg
             ? "invert brightness-0"
             : "invert-0 brightness-100"

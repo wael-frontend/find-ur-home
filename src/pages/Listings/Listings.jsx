@@ -6,6 +6,7 @@ import MapComponent from "../../ui/MapComponent";
 import { motion } from "framer-motion";
 import { MapRounded, AddHome } from "@mui/icons-material";
 import TableOpirarion from "../../feateures/Listing/TableOpirarion";
+import Footer from "../../components/Footer";
 
 export default function Listings() {
   const { user } = useUser();
@@ -77,17 +78,20 @@ export default function Listings() {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <button
+          {/*     <button
             className="flex items-center justify-center gap-2 w-[180px] h-[48px] mb-4 rounded-lg bg-blue-600 text-white font-medium shadow-md hover:bg-blue-700 transition"
             onClick={() => setOpenMap(!openMap)}
           >
             <MapRounded fontSize="small" />
             {openMap ? "Close map" : "Open map"}
-          </button>
-          <div className="flex-1 w-full   rounded-xl overflow-hidden shadow-lg border">
+          </button> */}
+          <div className="flex-1 w-full    overflow-hidden ">
             {openMap && <MapComponent />}
           </div>
         </motion.div>
+      </div>
+      <div>
+        <Footer />
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ import { MapPin, Calendar, Users, Search } from "lucide-react";
 export default function SearchBar() {
   return (
     <div className="max-w-[100%] mx-auto mt-0 px-0 h-24">
-      <div className="bg-white shadow-md rounded-2xl lg:flex items-center gap-4 py-4 px-6  ">
+      <div className="bg-white shadow-md rounded-2xl lg:flex  gap-4 py-4 px-6  ">
         {/* Destination */}
         <div className="flex flex-col w-full">
           <label className="text-gray-600 text-sm font-medium flex items-center gap-2">

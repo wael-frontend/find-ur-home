@@ -2,15 +2,19 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { supabase } from "../../Services/supabase";
 import Listinghoverdimages from "../../ui/Listinghoverdimages";
-import { GarageOutlined, LocationOn } from "@mui/icons-material";
+import { LocationOn } from "@mui/icons-material";
 import StarsRatea from "../../ui/StarsRatea";
-import { BathIcon, BedIcon, RulerDimensionLine } from "lucide-react";
-import SearchBar from "../../ui/Searchbbar";
-
+import { BathIcon, BedIcon, Car, RulerDimensionLine } from "lucide-react";
+import Footer from "../../components/Footer";
+/* import useUser from "../Auth/useUser";
+ */
 export default function DeatalsListingPage() {
   const Amenitiesarray = ["Parking", "Wifi", "Backyard", "Terrace"];
   const { ListingID } = useParams();
   const [listing, setlesting] = useState(null);
+  /*  const { user } = useUser(); */
+  /*   const { avatar, full_name } = user.user_metadata;
+   */
   useEffect(() => {
     async function FetchlestingDeatels() {
       const { data, error } = await supabase
@@ -26,10 +30,10 @@ export default function DeatalsListingPage() {
   console.log(listing);
 
   return (
-    <section className="h-screen">
+    <section className="h-screen overflow-scroll overflow-x-hidden items-center py-2 px-2">
       <Listinghoverdimages listing={listing} />
-      <div className="h-auto rounded-3xl   mt-4 lg:px-10 px-1.5 grid sm:grid-cols-1 lg:grid-cols-3">
-        <div className=" border-1 rounded-2xl border-gray-200 col-span-2 px-3 bg-[#fffdf5] ">
+      <div className="h-auto rounded-3xl   mt-4 lg:px-10 px-0 grid sm:grid-cols-1 lg:grid-cols-3 w-full">
+        <div className=" border-1 rounded-2xl border-gray-200 lg:col-span-2 lg:px-3 bg-[#ffffff] w-full ">
           <p className="flex gap-1 py-2 text-gray-400">
             <LocationOn />
             {listing?.city} city ,
@@ -48,19 +52,20 @@ export default function DeatalsListingPage() {
           </div>
           <div className=" flex gap-3 text-gray-400 py-4">
             <div className="flex gap-3">
-              <BedIcon /> {listing?.rooms}
+              <BedIcon size={20} /> {listing?.rooms}
               <div className="h-6 w-px bg-gray-500 "></div>
             </div>
 
             <div className="flex gap-3">
-              <BathIcon /> {listing?.bathroom}
+              <BathIcon size={20} /> {listing?.bathroom}
               <div className="h-6 w-px bg-gray-500 "></div>
             </div>
             <div className="flex gap-3">
-              <GarageOutlined /> 1<div className="h-6 w-px bg-gray-500 "></div>
+              <Car size={20} />
+              <div className="h-6 w-px bg-gray-500 "></div>
             </div>
             <div className="flex gap-3">
-              <RulerDimensionLine /> 400m
+              <RulerDimensionLine size={20} /> 400m
             </div>
           </div>
           <div className="py-4">
@@ -85,11 +90,9 @@ export default function DeatalsListingPage() {
                 </div>
               ))}
             </div>
-            <div className="flex"></div>
           </div>
-          <SearchBar />
         </div>
-        <div className=" border-1 rounded-2xl border-gray-200  px-4 ml-6 bg-[#fffdf5]">
+        <div className=" border-1 rounded-2xl border-gray-200 w-[100%] px-4 lg:ml-6 ">
           <h1 className=" text-[20px] py-7 text-[#464945] font-bold">
             Contact Agent
           </h1>
@@ -115,8 +118,50 @@ export default function DeatalsListingPage() {
               </button>
             </form>
           </div>
+          <div className="pt-6 bg-[#fffcf4">
+            <h1 className=" text-[20px] py-7 text-[#464945] font-bold">
+              For Buying Contact
+            </h1>
+            <div className=" w-[90%] h-scrren border-2 rounded-[2pw] border-gray-300 py-4 px-3.5-">
+              <div className=" flex justify-between items-center  px-4">
+                <div>
+                  <div className="flex gap-5">
+                    <h2 className=" text-[#454540] text-[16px] font-semibold ">
+                      Prime Solutions
+                    </h2>
+                    <div className="bg-[#ccf3da]  text-[12px] font-extrabold  text-[#35aa43] h-6 w-16 rounded-3xl  text-center ">
+                      Agency
+                    </div>
+                  </div>
+                  Agency Office
+                </div>
+
+                <img
+                  src="/default-user.jpg"
+                  className="h-12 w-12  object-fill"
+                />
+              </div>
+
+              <div className="h-0.5 w-py bg-gray-300 w-[100%] mt-2.5 "></div>
+
+              <div className="flex gap-3     pt-2 px-2.5">
+                <div className="bg-[#ccf3da] h-6 w-6 items-center rounded-full flex  ">
+                  <img src="\phone.svg" alt="" className="h-4 text-center" />
+                </div>
+                <p className="text-gray-500"> +212 {listing?.usernumber} </p>
+              </div>
+              <div className="h-0.5 w-py bg-gray-300 w-[100%] mt-2.5 "></div>
+              <div className="flex gap-3          pt-2 px-2.5">
+                <div className="bg-[#ccf3da] h-6 w-6 items-center rounded-full flex  ">
+                  <img src="\mail.svg" alt="" className="h-4 text-center" />
+                </div>
+                <p className="text-gray-500"> {listing?.user_email} </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+      <Footer />
     </section>
   );
 }

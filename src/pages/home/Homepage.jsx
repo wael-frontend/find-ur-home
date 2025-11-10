@@ -5,6 +5,9 @@ import About from "../../components/About";
 import DsplayinCards from "../../components/DsplayinCards";
 import Fqsection from "../../components/Fqsection";
 import Hero from "../../components/Hero";
+import Getstart from "../../ui/Getstart";
+import MarqSection from "../../ui/MarqSection";
+import Footer from "../../components/Footer";
 function Homepage() {
   /*  const stringhd1 = "ilovyou";
   const stringhd2 = "youlovei"; */
@@ -45,17 +48,15 @@ function Homepage() {
       <section className=" ">
         <Fqsection />
       </section>
-      {/*  <section className=" bg-gray-950">
-        <motion.h1
-          initial={{ opacity: 0, translateX: "4%" }}
-          whileInView={{ opacity: 1, translateX: 0 }}
-          transition={{ duration: 1 }}
-          className=" text-2xl font-bold tracking-tight text-[#E43636] uppercase max-sm:text-3xl pt-25 text-center"
-        >
-          Most Popular <h1 className="text-white text-6xl">Places</h1>
-        </motion.h1>
-        <ImageCityGallery />
-      </section> */}
+      <section className=" lg:mt-10  items-center text-cente ">
+        <Getstart />
+      </section>
+      <section className="">
+        <MarqSection />
+      </section>
+      <section>
+        <Footer />
+      </section>
     </motion.div>
   );
 }

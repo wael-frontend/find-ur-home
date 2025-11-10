@@ -1,5 +1,4 @@
 import CartList from "../ui/CartList";
-import { motion } from "framer-motion";
 export default function DsplayinCards() {
   return (
     <div>
@@ -15,15 +14,9 @@ export default function DsplayinCards() {
         </p>
       </div>
 
-      <motion.div
-        initial={{ opacity: 0, translateX: "-2%" }}
-        whileInView={{ opacity: 1, translateX: 0 }}
-        transition={{ duration: 0.5 }}
-        viewport={{ once: false, amount: 0.2 }}
-        className="grid  md:px-0 lg:grid-cols-4 md:grid-cols-2 gap-0 lg:px-10 sm:grid-cols-1"
-      >
+      <div className="grid  md:px-0 lg:grid-cols-4 md:grid-cols-2 gap-0 lg:px-10 sm:grid-cols-1">
         <CartList count={4} />
-      </motion.div>
+      </div>
     </div>
   );
 }
